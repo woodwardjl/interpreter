@@ -10,7 +10,8 @@ class Evaluator(object):
         self.world = world.World()
 
     def eval(self) -> int or bool:
-        self.__eval(self.tokens)
+        for token in self.tokens:
+            self.__eval(token)
 
     def __eval(self, token: list or str or int):
         if isinstance(token, list):
@@ -31,11 +32,15 @@ class Evaluator(object):
 
 
 if __name__ == "__main__":
-    lexer = lexer.Lexer("(define test"
+    lexer = lexer.Lexer("("
+                        "(define test"
                         "(if (lt 10 100)"
                         "(if (gt (mult 5 5) 24) (50) (100))"
-                        "(150)))")
+                        "(150))) "
+                        "(define r 100) "
+                        "(define x (mult 10 10))"
+                        ")")
     e = Evaluator(parser.Parser(lexer.tokenize().tokens))
     e.eval()
-    print(e.world.get("test"))
+    print(e.world.get("y"))
 

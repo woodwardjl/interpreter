@@ -34,9 +34,8 @@ class Parser(object):
 
 
 if __name__ == "__main__":
-    # lexer = lexer.Lexer("((define r 10) (add (mult r r) (div 10 2)))")
-    lexer = lexer.Lexer("(define test"
+    lexer = lexer.Lexer("(begin (define test"
                         "(if (lt 10 100)"
                         "(if (gt (mult 5 5) 24) (50) (100))"
-                        "(150)))")
+                        "(150))) (define r 100))")
     print(Parser(lexer.tokenize().tokens).tokens)

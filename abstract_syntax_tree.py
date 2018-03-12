@@ -29,6 +29,12 @@ class AST(object):
 
 
 if __name__ == "__main__":
-    lexer = l.Lexer(
-            "((define r 10) (add (mult r r) (div 10 2)) (define c 100))")
+    lexer = l.Lexer("("
+                        "(define test"
+                        "(if (lt 10 100)"
+                        "(if (gt (mult 5 5) 24) (50) (100))"
+                        "(150))) "
+                        "(define r 100) "
+                        "(define x (mult 10 10))"
+                        ")")
     print(AST(p.Parser(lexer.tokenize().tokens)))
