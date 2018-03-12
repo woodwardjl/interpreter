@@ -15,17 +15,28 @@ class Parser(object):
             return self.__value(token)
 
     def __parse_until(self, tokens: list, terminator: str) -> list:
-        self.element_count += 1
-        f = []
-        while tokens[0] != terminator:
-            f.append(self.parse(tokens))
-        tokens.pop(0)
+        try:
+            self.element_count += 1
+            parsed_tokens = []
 
-        return f
+            while tokens[0] != terminator:
+                parsed_tokens.append(self.parse(tokens))
+
+            tokens.pop(0)
+
+            return parsed_tokens
+        except:
+            print("unable to find terminator: \""
+                  + terminator + "\"")
 
     def __value(self, lexeme: str) -> int or str:
         return int(lexeme) if lexeme.isdigit() else lexeme
 
+
 if __name__ == "__main__":
-    lexer = lexer.Lexer("(begin (define r 10) (add (mult r r) (div 10 2)))")
+    # lexer = lexer.Lexer("((define r 10) (add (mult r r) (div 10 2)))")
+    lexer = lexer.Lexer("(define test"
+                        "(if (lt 10 100)"
+                        "(if (gt (mult 5 5) 24) (50) (100))"
+                        "(150)))")
     print(Parser(lexer.tokenize().tokens).tokens)

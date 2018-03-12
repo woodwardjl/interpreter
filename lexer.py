@@ -3,7 +3,7 @@ class Lexer(object):
         self.source_code = source_code
         self.tokens = []
 
-    def tokenize(self):
+    def tokenize(self) -> "Lexer":
         self.tokens = self.source_code \
             .replace("(", " ( ") \
             .replace(")", " ) ") \
