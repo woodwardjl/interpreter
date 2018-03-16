@@ -1,4 +1,4 @@
-import parser as p
+import _parser as p
 import lexer as l
 
 
