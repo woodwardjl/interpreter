@@ -36,20 +36,6 @@ class Evaluator(object):
 
 
 if __name__ == "__main__":
-    # lexer = lexer.Lexer("(begin"
-    #                     "(define test"
-    #                     "(if (lt 10 100)"
-    #                     "(if (gt (mult 5 5) 24) (50) (100))"
-    #                     "(150))) "
-    #                     "(define r 100) "
-    #                     "(define x (mult 10 10))"
-    #                     ")")
-    lex = lexer.Lexer("(begin"
-                      "(define test (if (and (lt 50 10) (gt 10 5)) 100 200))"
-                      ")")
+    lex = lexer.Lexer("(begin (define test (if (and (lt 50 10) (gt 10 5)) 100 200)))")
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
-    print(e.tokens)
-    if e.tokens[0] != "begin":
-        eh.ErrorHandler.print_and_exit("first function must be 'begin'!")
-    e.eval()
-    print(e.world.get("test"))
+

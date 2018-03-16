@@ -28,7 +28,7 @@ class Parser(object):
             return parsed_tokens
         except:
             eh.ErrorHandler.print_and_exit("unable to find terminator: \""
-                  + terminator + "\"")
+                                           + terminator + "\"")
 
     def __value(self, lexeme: str) -> int or str:
         return int(lexeme) if lexeme.isdigit() else lexeme

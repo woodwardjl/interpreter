@@ -29,11 +29,11 @@ class Node(object):
         has_left_child = cls.left_child != None
 
         return "{} -> {}, {}{}{}".format(
-            cls.key,
-            cls.left_child.key if has_left_child else "LEAF",
-            cls.right_child.key if has_right_child else "LEAF",
-            "\n" + str(cls.left_child) if has_left_child else "",
-            "\n" + str(cls.right_child) if has_right_child else "")
+                cls.key,
+                cls.left_child.key if has_left_child else "LEAF",
+                cls.right_child.key if has_right_child else "LEAF",
+                "\n" + str(cls.left_child) if has_left_child else "",
+                "\n" + str(cls.right_child) if has_right_child else "")
 
 
 if __name__ == "__main__":

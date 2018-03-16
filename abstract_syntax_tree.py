@@ -29,12 +29,7 @@ class AST(object):
 
 
 if __name__ == "__main__":
-    lexer = l.Lexer("("
-                        "(define test"
-                        "(if (lt 10 100)"
-                        "(if (gt (mult 5 5) 24) (50) (100))"
-                        "(150))) "
-                        "(define r 100) "
-                        "(define x (mult 10 10))"
-                        ")")
-    print(AST(p.Parser(lexer.tokenize().tokens)))
+    lex = l.Lexer("(begin"
+                  "(define test (if (and (lt 50 10) (gt 10 5)) 100 200))"
+                  ")")
+    print(AST(p.Parser(lex.tokenize().tokens)))
