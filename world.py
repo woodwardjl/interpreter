@@ -34,14 +34,21 @@ class World(object):
     def insert(self, key: int or str, value: int or str):
         self.map[key] = value
 
-    def get(self, key) -> int or str:
+    def get_value(self, key) -> int or str:
         try:
             return self.map[key]
         except:
             eh.ErrorHandler.print_and_exit(
-                "key (" + key + "): key does not exist!")
+                    "key (" + key + "): key does not exist!")
+
+    def get_key(self, value):
+        for k, v in self.map.items():
+            if v == value:
+                return k
+
+        return None
 
 
 if __name__ == "__main__":
     w = World()
-    print(w.get("mult")(10, 5))
+    print(w.get_value("mult")(10, 5))
