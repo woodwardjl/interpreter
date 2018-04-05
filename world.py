@@ -29,6 +29,8 @@ class World(object):
             "noteq":     m.noteq,
             "and":       o.and_}
 
+        self.func_map = {}
+
     def insert(self, key: int or str, value: int or str):
         self.map[key] = value
 

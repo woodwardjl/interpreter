@@ -9,3 +9,10 @@ def is_advanced_math(value: str) -> bool:
 
 def is_operator(value: str) -> bool:
     return value in ["gt", "lt", "gteq", "lteq", "iseq", "noteq", "and"]
+
+
+def is_keyword(value: str) -> bool:
+    return is_basic_math(value) or \
+           is_advanced_math(value) or \
+           is_operator(value) or \
+           value in ["begin", "define", "put"]
