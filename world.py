@@ -29,6 +29,7 @@ class World(object):
             "noteq":     m.noteq,
             "and":       o.and_}
 
+        # func_map element format: {"sqr": {{"args": ["x", "y"]}, {"source:": "(sqr x y)"}}
         self.func_map = {}
 
     def insert(self, key: int or str, value: int or str):

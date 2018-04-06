@@ -17,7 +17,7 @@ def is_keyword(value: str) -> bool:
     return is_basic_math(value) or \
            is_advanced_math(value) or \
            is_operator(value) or \
-           value in ["begin", "define", "put"]
+           value in ["begin", "def", "put"]
 
 
 def is_string(value: str) -> bool:
