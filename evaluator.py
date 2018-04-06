@@ -44,13 +44,13 @@ class Evaluator(object):
         if type_helper.is_keyword(token):
             return token
         else:
-            if isinstance(token, int):
+            if type(token) == int:
                 return token
             elif type_helper.is_string(token):
                 return token[1:-1]
             else:
                 if token in self.world.map:
-                    return self.world.get_value(token)
+                    return self.world.map[token]
                 else:
                     eh.ErrorHandler.print_and_exit(
                             "variable undefined: " + token)
@@ -62,6 +62,9 @@ class Evaluator(object):
             return self.__eval(token[3])
 
     def __eval_loop(self, token: list):
+        if len(token) <= 2:
+            return
+
         for i in range(self.__eval(token[1])):
             self.__eval(token[2])
 
@@ -71,7 +74,7 @@ class Evaluator(object):
             arg_one = self.__eval(token[1])
             arg_two = self.__eval(token[2])
 
-            if not isinstance(arg_one, type(arg_two)):
+            if not type(arg_one) == type(arg_two):
                 eh.ErrorHandler.print_and_exit(
                         "invalid math expression: {0} {1} {2} -> "
                         "({3} {4} {5})".format(
@@ -80,6 +83,8 @@ class Evaluator(object):
                                 arg_one, arg_two))
                 return self.world.get_value(token[0])(self.__eval(token[1]),
                                                       self.__eval(token[2]))
+            else:
+                return self.world.get_value(token[0])(arg_one, arg_two)
         else:
             return self.world.get_value(token[0])(self.__eval(token[1]))
 
@@ -87,9 +92,11 @@ class Evaluator(object):
 if __name__ == "__main__":
     lex = lexer.Lexer("(begin "
                       "(define test "
-                      "(if (and (lt 50 10) (gt 10 5)) \"lol\" \"rofl\"))"
-                      "(loop (len \"12345\") (define test (plus test 5)))"
-                      ")")
+                      "(if (and (lt 50 10) (gt 10 5)) "
+                      "100 "
+                      "200))"
+                      "(loop (len \"12345\") (put \"jamielol\")))")
+
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
     e.eval()
     print(e.tokens)
