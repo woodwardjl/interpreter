@@ -21,9 +21,11 @@ def replace_in_list(check_list: list, to_find, replacement):
 def replace_in_str(check_string: str, to_find: str, replacement: str) -> str:
     return check_string.replace(to_find, replacement)
 
+
 def is_two_different_types(t: type, fst, snd) -> bool:
     return (type(fst) == t and type(snd) != t) \
            or (type(fst) != t and type(snd) == t)
+
 
 def is_char(char, checker) -> bool:
     return char == checker

@@ -10,6 +10,8 @@ class Evaluator(object):
     def __init__(self, parser: _parser.Parser):
         self.tokens = parser.tokens
         self.world = world.World()
+        self.remove_vars = []
+
         self.__eval_map = {
             "if":   self.__eval_if,
             "put":  self.__eval_put,
@@ -22,10 +24,14 @@ class Evaluator(object):
 
     def __eval(self, token: list or str or int):
         if isinstance(token, list):
+            self.remove_vars = self.__get_remove_vars(token)
             if len(token) == 0:
                 return
             elif len(token) == 1:
-                return self.__eval(token[0])
+                if self.world.func_map_has_key(token[0]):
+                    return self.__eval_func(token[0], [])
+                else:
+                    return self.__eval(token[0])
             elif token[0] == "var":
                 self.world.insert(token[1], self.__eval(token[2]))
             elif token[0] == "func":
@@ -38,7 +44,7 @@ class Evaluator(object):
                     return self.__eval_func(token[0], token[1:])
                 else:
                     return self.world.get_value(token[0])(
-                           self.__eval(token[1]))
+                            self.__eval(token[1]))
             else:
                 tok = token[0]
                 return self.__eval_map[tok](token)
@@ -80,11 +86,8 @@ class Evaluator(object):
             self.__eval(token[2])
 
     def __eval_math(self, token: list):
-        arg_one      = self.__eval(token[1])
-        arg_two      = self.__eval(token[2])
-        arg_one_type = type(arg_one)
-        arg_two_type = type(arg_two)
-
+        arg_one = self.__eval(token[1])
+        arg_two = self.__eval(token[2])
 
         if utility.is_two_different_types(str, arg_one, arg_two):
             eh.print_and_exit("invalid math expression: {0} {1} {2} -> "
@@ -94,7 +97,8 @@ class Evaluator(object):
                                       arg_one, arg_two))
             return self.world.get_value(token[0])(self.__eval(token[1]),
                                                   self.__eval(token[2]))
-        elif utility.is_different_numeric_type(arg_one, arg_two):
+
+        if utility.is_different_numeric_type(arg_one, arg_two):
             arg_one = float(arg_one)
             arg_two = float(arg_two)
 
@@ -123,6 +127,15 @@ class Evaluator(object):
 
         return self.__eval(func_copy["source"])
 
+    def __get_remove_vars(self, token: list):
+        to_return = []
+
+        for sublist in token:
+            if type(sublist) == list and len(sublist) > 0 and sublist[0] == "var":
+                to_return.append(sublist[1])
+
+        return to_return
+
 
 if __name__ == "__main__":
     lex = lexer.Lexer("""
@@ -134,6 +147,9 @@ if __name__ == "__main__":
                           
                         (func sqr (x)
                           (* x x))
+                          
+                        (func testlocalvar ()
+                          (put 10))
                           
                         (func my_pow (x y)
                           (^ x y))
@@ -157,6 +173,7 @@ if __name__ == "__main__":
                         (put cubetest)
                         (put cubetest2)
                         (put strtest2)
+                        (testlocalvar)
 
                         (print "string test" 3)
 
@@ -171,14 +188,4 @@ if __name__ == "__main__":
                       """)
 
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
-    print(e.tokens)
     e.eval()
-    print(e.world.func_map)
-    # for item in e.tokens:
-    #     if type(item) == list:
-    #         print("[ ", end="")
-    #         for i in item:
-    #             print(type(i), end=" ")
-    #         print("]")
-    #     else:
-    #         print(type(item))
