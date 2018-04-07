@@ -1,1 +1,40 @@
-(begin (define test (if (and (lt 50 10) (gt 10 5)) 100 200)))
+  (begin
+
+    (func cube (x)
+      (^ x 3))
+
+    (func sqr (x)
+      (* x x))
+
+    (func my_pow (x y)
+      (^ x y))
+
+    (func print (val rep)
+      (loop rep
+        (put val)))
+
+    (put
+      (if (&& (< (cube 10) 1001)
+              (< 5 10))
+        (sqr 10)
+        (sqr 9)))
+
+    (var cubetest  (cube 3))
+    (var cubetest2 (cube 2))
+    (var powtest   (my_pow 2 4))
+    (var strtest   ("my string"))
+    (var strtest2  (+ "hello " "lol"))
+
+    (put cubetest)
+    (put cubetest2)
+    (put strtest2)
+
+    (print "string test" 3)
+
+    (loop 3
+      (put (> cubetest powtest)))
+
+    (loop (len "testing lol")
+      (put (strtest)))
+
+  )

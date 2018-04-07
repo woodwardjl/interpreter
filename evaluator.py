@@ -152,10 +152,11 @@ if __name__ == "__main__":
                         (var cubetest2 (cube 2))
                         (var powtest   (my_pow 2 4))
                         (var strtest   ("my string"))
+                        (var strtest2  (+ "hello " "lol"))
 
                         (put cubetest)
                         (put cubetest2)
-                        (put (+ "hello " "lol"))
+                        (put strtest2)
 
                         (print "string test" 3)
 

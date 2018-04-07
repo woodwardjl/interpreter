@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import _parser as parser_
 import sys
 import evaluator
@@ -10,9 +11,9 @@ def main():
     _lex    = lexer.Lexer(f.read())
     _parser = parser_.Parser(_lex.tokenize().tokens)
     _eval   = evaluator.Evaluator(_parser)
+    print(_eval.tokens)
     if _eval.tokens[0] != "begin":
         eh.print_and_exit("first function must be 'begin'!")
-
-    print(_eval.tokens)
+    _eval.eval()
 
 main()
