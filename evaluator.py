@@ -46,11 +46,12 @@ class Evaluator(object):
         else:
             return self.__eval_literal(token)
 
-    def __eval_literal(self, token: int or str) -> int or str:
+    def __eval_literal(self,
+                       token: int or str or float) -> int or str or float:
         if type_helper.is_keyword(token):
             return token
         else:
-            if type(token) == int:
+            if type(token) == int or type(token) == float:
                 return token
             elif type_helper.is_string(token):
                 return token[1:-1]
@@ -58,8 +59,7 @@ class Evaluator(object):
                 if self.world.map_has_key(token):
                     return self.world.get_value(token)
                 else:
-                    eh.ErrorHandler.print_and_exit(
-                            "variable undefined: " + token)
+                    eh.print_and_exit("variable undefined: " + token)
 
     def __eval_if(self, token: list):
         if self.__eval(token[1]):
@@ -74,26 +74,30 @@ class Evaluator(object):
         loop_count = self.__eval(token[1])
 
         if type(loop_count) == str:
-            eh.ErrorHandler.print_and_exit("invalid loop count: " + loop_count)
+            eh.print_and_exit("invalid loop count: " + loop_count)
 
-        for i in range(loop_count):
+        for i in range(int(loop_count)):
             self.__eval(token[2])
 
     def __eval_math(self, token: list):
-        arg_one = self.__eval(token[1])
-        arg_two = self.__eval(token[2])
+        arg_one      = self.__eval(token[1])
+        arg_two      = self.__eval(token[2])
+        arg_one_type = type(arg_one)
+        arg_two_type = type(arg_two)
 
-        if not type(arg_one) == type(arg_two):
-            eh.ErrorHandler.print_and_exit(
-                    "invalid math expression: {0} {1} {2} -> "
-                    "({3} {4} {5})".format(
-                            token[0], type(arg_one).__name__,
-                            type(arg_two).__name__, token[0],
-                            arg_one, arg_two))
+        if arg_one_type == str or arg_two_type == str:
+            eh.print_and_exit("invalid math expression: {0} {1} {2} -> "
+                              "({3} {4} {5})"
+                              .format(token[0], type(arg_one).__name__,
+                                      type(arg_two).__name__, token[0],
+                                      arg_one, arg_two))
             return self.world.get_value(token[0])(self.__eval(token[1]),
                                                   self.__eval(token[2]))
-        else:
-            return self.world.get_value(token[0])(arg_one, arg_two)
+        elif utility.is_different_numeric_type(arg_one, arg_two):
+            arg_one = float(arg_one)
+            arg_two = float(arg_two)
+
+        return self.world.get_value(token[0])(arg_one, arg_two)
 
     def __eval_put(self, token: list or str or int):
         print(self.__eval(token[1]))
@@ -101,7 +105,7 @@ class Evaluator(object):
     def __eval_len(self, token: list or str or int):
         loop_count = self.__eval(token[1])
         if type(loop_count) == int:
-            eh.ErrorHandler.print_and_exit("invalid len of integer!")
+            eh.print_and_exit("invalid len of integer!")
         else:
             return len(loop_count.replace("'", ""))
 
@@ -109,8 +113,9 @@ class Evaluator(object):
         func = self.world.get_func(func_name)
 
         if len(args) != len(func["args"]):
-            eh.ErrorHandler.print_and_exit(
-                    "func (" + func_name + "): invalid argument count!")
+            eh.print_and_exit("func ("
+                              + func_name
+                              + "): invalid argument count!")
 
         for index, item in enumerate(func["args"]):
             utility.replace_in_list(func["source"], item, args[index])
@@ -122,14 +127,17 @@ if __name__ == "__main__":
     lex = lexer.Lexer("""
 
                       (begin
+                      
                         (func cube (x)
-                          (^ x 3))
+                          (^ x 3.0))
+                          
                         (func sqr (x)
                           (* x x))
+                          
                         (func my_pow (x y)
                           (^ x y))
 
-                        (func my_put (val rep)
+                        (func print (val rep)
                           (loop rep
                             (put val)))
 
@@ -138,23 +146,31 @@ if __name__ == "__main__":
                             (sqr 10)
                             (sqr 9)))
 
-                        (var cubetest (cube 10))
+                        (var cubetest (cube 3))
                         (var powtest (my_pow 2 4))
                         (var strtest ("my string"))
 
                         (put (+ powtest cubetest))
 
-                        (my_put "string test" 3)
+                        (print "string test" 3)
 
                         (loop 3
                           (put (> cubetest powtest)))
 
-                        (loop (len "testing big boy")
+                        (loop (len "testing lol")
                           (put (strtest)))
                       )
 
                       """)
 
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
-    e.eval()
     print(e.tokens)
+    e.eval()
+    # for item in e.tokens:
+    #     if type(item) == list:
+    #         print("[ ", end="")
+    #         for i in item:
+    #             print(type(i), end=" ")
+    #         print("]")
+    #     else:
+    #         print(type(item))

@@ -15,8 +15,10 @@ class Lexer(object):
             .replace(")", " ) ") \
             .split()
 
-        for i in range(len(self.tokens)):
-            self.tokens[i] = self.tokens[i].replace(self.string_seperator, " ")
+        for index, item in enumerate(self.tokens):
+            self.tokens[index] = u.replace_in_str(item,
+                                                  self.string_seperator,
+                                                  " ")
 
         return self
 
@@ -35,8 +37,3 @@ class Lexer(object):
 
     def __str__(cls):
         return str(cls.tokens)
-
-
-if __name__ == "__main__":
-    l = Lexer("""(begin (put "test lol") (var bla "BLA LOL RO FL ROFL"))""")
-    print(l.tokenize().tokens)

@@ -41,15 +41,13 @@ class World(object):
         try:
             return self.func_map[key]
         except:
-            eh.ErrorHandler.print_and_exit(
-                    "func (" + key + "): func does not exist!")
+            eh.print_and_exit("func (" + key + "): func does not exist!")
 
     def get_value(self, key) -> int or str:
         try:
             return self.__map[key]
         except:
-            eh.ErrorHandler.print_and_exit(
-                    "key (" + key + "): key does not exist!")
+            eh.print_and_exit("key (" + key + "): key does not exist!")
 
     def get_key(self, value):
         for k, v in self.__map.items():
@@ -62,8 +60,3 @@ class World(object):
 
     def func_map_has_key(self, key: int or str):
         return key in self.func_map
-
-
-if __name__ == "__main__":
-    w = World()
-    print(w.get_value("mult")(10, 5))

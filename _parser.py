@@ -27,17 +27,14 @@ class Parser(object):
 
             return parsed_tokens
         except:
-            eh.ErrorHandler.print_and_exit(
-                "unable to find function terminator: \""
-                + terminator + "\"")
+            eh.print_and_exit("unable to find function terminator: \""
+                              + terminator + "\"")
 
     def __value(self, lexeme: str) -> int or str:
-        return int(lexeme) if lexeme.isdigit() else lexeme
-
-
-if __name__ == "__main__":
-    lexer = lexer.Lexer("(begin (define test"
-                        "(if (lt 10 100)"
-                        "(if (gt (mult 5 5) 24) (50) (100))"
-                        "(150))) (define r 100))")
-    print(Parser(lexer.tokenize().tokens).tokens)
+        try:
+            return int(lexeme)
+        except:
+            try:
+                return float(lexeme)
+            except:
+                return lexeme
