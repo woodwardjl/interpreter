@@ -73,8 +73,8 @@ class Evaluator(object):
 
         loop_count = self.__eval(token[1])
 
-        if type(loop_count) is str:
-            loop_count = len(loop_count)
+        if type(loop_count) == str:
+            eh.ErrorHandler.print_and_exit("invalid loop count: " + loop_count)
 
         for i in range(loop_count):
             self.__eval(token[2])
@@ -100,7 +100,7 @@ class Evaluator(object):
 
     def __eval_len(self, token: list or str or int):
         loop_count = self.__eval(token[1])
-        if isinstance(loop_count, int):
+        if type(loop_count) == int:
             eh.ErrorHandler.print_and_exit("invalid len of integer!")
         else:
             return len(loop_count.replace("'", ""))
@@ -112,49 +112,47 @@ class Evaluator(object):
             eh.ErrorHandler.print_and_exit(
                     "func (" + func_name + "): invalid argument count!")
 
-        # need to swap values
-        for item in args:
-            for func_arg in func["args"]:
-                utility.replace_in_list(func["source"], func_arg, item)
+        for index, item in enumerate(func["args"]):
+            utility.replace_in_list(func["source"], item, args[index])
 
         return self.__eval(func["source"])
 
 
 if __name__ == "__main__":
     lex = lexer.Lexer("""
-    
+
                       (begin
-                        (func cube (x) 
+                        (func cube (x)
                           (^ x 3))
-                        (func sqr (x) 
+                        (func sqr (x)
                           (* x x))
                         (func my_pow (x y)
                           (^ x y))
-                          
+
                         (func my_put (val rep)
-                          (loop rep 
-                            (put val)))                        
-                          
-                        (put 
+                          (loop rep
+                            (put val)))
+
+                        (put
                           (if (&& (< (cube 10) 1001) (< 5 10))
-                            (sqr 10) 
+                            (sqr 10)
                             (sqr 9)))
-                          
+
                         (var cubetest (cube 10))
-                        (var powtest (my_pow 3 3))
-                        (var strtest ("mystring"))
-                      
+                        (var powtest (my_pow 2 4))
+                        (var strtest ("my string"))
+
                         (put (+ powtest cubetest))
-                        
-                        (my_put "rofl" 4)
-                        
-                        (loop 3 
+
+                        (my_put "string test" 3)
+
+                        (loop 3
                           (put (> cubetest powtest)))
-                          
-                        (loop (len "test")
+
+                        (loop (len "testing big boy")
                           (put (strtest)))
-                      )                  
-                      
+                      )
+
                       """)
 
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
