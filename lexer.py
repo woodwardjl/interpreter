@@ -29,6 +29,8 @@ class Lexer(object):
                 i += 1
                 while not u.is_char(self.source_code[i], "\""):
                     i += 1
+                    if i >= len(self.source_code):
+                        return
                     if self.source_code[i].isspace():
                         self.source_code = self.source_code[:i] \
                                            + self.string_seperator \

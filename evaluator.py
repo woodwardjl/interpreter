@@ -85,7 +85,8 @@ class Evaluator(object):
         arg_one_type = type(arg_one)
         arg_two_type = type(arg_two)
 
-        if arg_one_type == str or arg_two_type == str:
+
+        if utility.is_two_different_types(str, arg_one, arg_two):
             eh.print_and_exit("invalid math expression: {0} {1} {2} -> "
                               "({3} {4} {5})"
                               .format(token[0], type(arg_one).__name__,
@@ -154,6 +155,7 @@ if __name__ == "__main__":
 
                         (put cubetest)
                         (put cubetest2)
+                        (put (+ "hello " "lol"))
 
                         (print "string test" 3)
 
