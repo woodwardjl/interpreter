@@ -1,11 +1,15 @@
-  (begin
 
+  (begin
+  
     (func cube (x)
       (^ x 3))
-
+      
     (func sqr (x)
       (* x x))
-
+      
+    (func testlocalvar ()
+      (put 10))
+      
     (func my_pow (x y)
       (^ x y))
 
@@ -14,7 +18,7 @@
         (put val)))
 
     (put
-      (if (&& (< (cube 10) 1001)
+      (if (&& (< (cube 10) 1001) 
               (< 5 10))
         (sqr 10)
         (sqr 9)))
@@ -28,6 +32,7 @@
     (put cubetest)
     (put cubetest2)
     (put strtest2)
+    (testlocalvar)
 
     (print "string test" 3)
 
@@ -36,5 +41,5 @@
 
     (loop (len "testing lol")
       (put (strtest)))
-
+      
   )

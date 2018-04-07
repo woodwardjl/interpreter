@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0ef1992c-125c-4bbb-a644-25fcf6c9e384" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example.txt" beforeDir="false" afterPath="$PROJECT_DIR$/example.fyp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exec.py" beforeDir="false" afterPath="$PROJECT_DIR$/exec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/utility.py" afterDir="false" />
-    </list>
+    <list default="true" id="0ef1992c-125c-4bbb-a644-25fcf6c9e384" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +85,7 @@
           <file leaf-file-name="world.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/world.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="406">
+                <state relative-caret-position="629">
                   <caret line="64" selection-start-line="64" selection-end-line="64" />
                   <folding>
                     <element signature="e#0#20#0" expanded="true" />
@@ -134,8 +128,8 @@
           <file leaf-file-name="evaluator.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/evaluator.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="30" column="55" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
+                <state relative-caret-position="374">
+                  <caret line="153" column="42" lean-forward="true" selection-start-line="153" selection-start-column="42" selection-end-line="153" selection-end-column="42" />
                   <folding>
                     <element signature="e#0#14#0" expanded="true" />
                   </folding>
@@ -456,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1523140790704</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added the ability to call function with 0 arguments.">
+      <created>1523142922587</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1523142922587</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -468,7 +469,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="bottom" id="Python Console" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27667493" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27667493" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.24876237" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.135" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
@@ -498,7 +499,8 @@
     <MESSAGE value="Added float capability; Math operations with two types (float and int) will convert to float." />
     <MESSAGE value="Added get_func_copy to fix the issue of overriding function parameters." />
     <MESSAGE value="Added the capability to add two strings." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the capability to add two strings." />
+    <MESSAGE value="Added the ability to call function with 0 arguments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to call function with 0 arguments." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -852,7 +854,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/world.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
+        <state relative-caret-position="629">
           <caret line="64" selection-start-line="64" selection-end-line="64" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
@@ -862,8 +864,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="30" column="55" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
+        <state relative-caret-position="374">
+          <caret line="153" column="42" lean-forward="true" selection-start-line="153" selection-start-column="42" selection-end-line="153" selection-end-column="42" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

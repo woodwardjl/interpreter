@@ -140,50 +140,50 @@ class Evaluator(object):
 if __name__ == "__main__":
     lex = lexer.Lexer("""
 
-                      (begin
-                      
-                        (func cube (x)
-                          (^ x 3))
-                          
-                        (func sqr (x)
-                          (* x x))
-                          
-                        (func testlocalvar ()
-                          (put 10))
-                          
-                        (func my_pow (x y)
-                          (^ x y))
+  (begin
+  
+    (func cube (x)
+      (^ x 3))
+      
+    (func sqr (x)
+      (* x x))
+      
+    (func testlocalvar ()
+      (put 10))
+      
+    (func my_pow (x y)
+      (^ x y))
 
-                        (func print (val rep)
-                          (loop rep
-                            (put val)))
+    (func print (val rep)
+      (loop rep
+        (put val)))
 
-                        (put
-                          (if (&& (< (cube 10) 1001) 
-                                  (< 5 10))
-                            (sqr 10)
-                            (sqr 9)))
+    (put
+      (if (&& (< (cube 10) 1001) 
+              (< 5 10))
+        (sqr 10)
+        (sqr 9)))
 
-                        (var cubetest  (cube 3))
-                        (var cubetest2 (cube 2))
-                        (var powtest   (my_pow 2 4))
-                        (var strtest   ("my string"))
-                        (var strtest2  (+ "hello " "lol"))
+    (var cubetest  (cube 3))
+    (var cubetest2 (cube 2))
+    (var powtest   (my_pow 2 4))
+    (var strtest   ("my string"))
+    (var strtest2  (+ "hello " "lol"))
 
-                        (put cubetest)
-                        (put cubetest2)
-                        (put strtest2)
-                        (testlocalvar)
+    (put cubetest)
+    (put cubetest2)
+    (put strtest2)
+    (testlocalvar)
 
-                        (print "string test" 3)
+    (print "string test" 3)
 
-                        (loop 3
-                          (put (> cubetest powtest)))
+    (loop 3
+      (put (> cubetest powtest)))
 
-                        (loop (len "testing lol")
-                          (put (strtest)))
-                          
-                      )
+    (loop (len "testing lol")
+      (put (strtest)))
+      
+  )
 
                       """)
 
