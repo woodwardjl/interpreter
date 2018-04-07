@@ -71,7 +71,12 @@ class Evaluator(object):
         if len(token) <= 2:
             return
 
-        for i in range(self.__eval(token[1])):
+        loop_count = self.__eval(token[1])
+
+        if type(loop_count) is str:
+            loop_count = len(loop_count)
+
+        for i in range(loop_count):
             self.__eval(token[2])
 
     def __eval_math(self, token: list):
@@ -126,27 +131,31 @@ if __name__ == "__main__":
                         (func my_pow (x y)
                           (^ x y))
                           
+                        (func my_put (val rep)
+                          (loop rep 
+                            (put val)))                        
+                          
                         (put 
-                          (if (< (cube 10) 1000) 
+                          (if (&& (< (cube 10) 1001) (< 5 10))
                             (sqr 10) 
                             (sqr 9)))
                           
                         (var cubetest (cube 10))
                         (var powtest (my_pow 3 3))
+                        (var strtest ("mystring"))
                       
-                        (put cubetest)
-                        (put powtest)
+                        (put (+ powtest cubetest))
+                        
+                        (my_put "rofl" 4)
+                        
+                        (loop 3 
+                          (put (> cubetest powtest)))
+                          
+                        (loop (len "test")
+                          (put (strtest)))
                       )                  
                       
                       """)
-
-    # lex = lexer.Lexer("(begin "
-    #                   "(var test "
-    #                   "(if (and (lt 50 10) (gt 10 5)) "
-    #                   "100 "
-    #                   "200))"
-    #                   "(loop (len \"12345\") (var test (plus test 10)))"
-    #                   ")")
 
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
     e.eval()

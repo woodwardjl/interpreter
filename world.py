@@ -7,12 +7,12 @@ import math
 class World(object):
     def __init__(self):
         self.__map = {  # Basic Math
-            "*":      o.mul,
-            "+":      o.add,
-            "/":       o.floordiv,
-            "-":     o.sub,
-            "^":       o.pow,
-            "%":       o.mod,
+            "*":         o.mul,
+            "+":         o.add,
+            "/":         o.floordiv,
+            "-":         o.sub,
+            "^":         o.pow,
+            "%":         o.mod,
             "max":       m.max,
             "min":       m.min,
             # Advanced Math
