@@ -2,7 +2,7 @@ import operator as o
 import mymath as m
 import error_handler as eh
 import math
-
+import copy
 
 class World(object):
     def __init__(self):
@@ -54,6 +54,9 @@ class World(object):
             if v == value:
                 return k
         return None
+
+    def get_func_copy(self, name: int or str):
+        return copy.deepcopy(self.get_func(name))
 
     def map_has_key(self, key: int or str):
         return key in self.__map

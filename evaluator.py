@@ -38,7 +38,7 @@ class Evaluator(object):
                     return self.__eval_func(token[0], token[1:])
                 else:
                     return self.world.get_value(token[0])(
-                            self.__eval(token[1]))
+                           self.__eval(token[1]))
             else:
                 tok = token[0]
                 return self.__eval_map[tok](token)
@@ -110,17 +110,17 @@ class Evaluator(object):
             return len(loop_count.replace("'", ""))
 
     def __eval_func(self, func_name: str, args: list):
-        func = self.world.get_func(func_name)
+        func_copy = self.world.get_func_copy(func_name)
 
-        if len(args) != len(func["args"]):
+        if len(args) != len(func_copy["args"]):
             eh.print_and_exit("func ("
                               + func_name
                               + "): invalid argument count!")
 
-        for index, item in enumerate(func["args"]):
-            utility.replace_in_list(func["source"], item, args[index])
+        for index, item in enumerate(func_copy["args"]):
+            utility.replace_in_list(func_copy["source"], item, args[index])
 
-        return self.__eval(func["source"])
+        return self.__eval(func_copy["source"])
 
 
 if __name__ == "__main__":
@@ -129,7 +129,7 @@ if __name__ == "__main__":
                       (begin
                       
                         (func cube (x)
-                          (^ x 3.0))
+                          (^ x 3))
                           
                         (func sqr (x)
                           (* x x))
@@ -142,15 +142,18 @@ if __name__ == "__main__":
                             (put val)))
 
                         (put
-                          (if (&& (< (cube 10) 1001) (< 5 10))
+                          (if (&& (< (cube 10) 1001) 
+                                  (< 5 10))
                             (sqr 10)
                             (sqr 9)))
 
-                        (var cubetest (cube 3))
-                        (var powtest (my_pow 2 4))
-                        (var strtest ("my string"))
+                        (var cubetest  (cube 3))
+                        (var cubetest2 (cube 2))
+                        (var powtest   (my_pow 2 4))
+                        (var strtest   ("my string"))
 
-                        (put (+ powtest cubetest))
+                        (put cubetest)
+                        (put cubetest2)
 
                         (print "string test" 3)
 
@@ -159,6 +162,7 @@ if __name__ == "__main__":
 
                         (loop (len "testing lol")
                           (put (strtest)))
+                          
                       )
 
                       """)
@@ -166,6 +170,7 @@ if __name__ == "__main__":
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
     print(e.tokens)
     e.eval()
+    print(e.world.func_map)
     # for item in e.tokens:
     #     if type(item) == list:
     #         print("[ ", end="")
