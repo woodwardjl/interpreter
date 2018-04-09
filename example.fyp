@@ -48,6 +48,7 @@
     (putln strtest2)
     (test_local_var)
     (put (higher_order 10 sqr))
+    (put localvar1)
 
     (print "string test" 3)
 

@@ -2,7 +2,9 @@
 (begin test
 
   (func str_len (str count) (
-    (if (== (len str) count) ("success!") ("failure"))
+    (if (== (len str) count)
+        ("success!")
+        ("failure"))
   ))
 
   (func int_len () (

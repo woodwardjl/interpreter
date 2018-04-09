@@ -4,10 +4,9 @@
     <list default="true" id="0ef1992c-125c-4bbb-a644-25fcf6c9e384" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/error_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/error_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example.fyp" beforeDir="false" afterPath="$PROJECT_DIR$/example.fyp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exec.py" beforeDir="false" afterPath="$PROJECT_DIR$/exec.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/lexer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/function_arg_count.fyp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/function_arg_count.fyp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/len.fyp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/len.fyp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="example.fyp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example.fyp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+            <state relative-caret-position="646">
+              <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -41,8 +40,8 @@
       <file leaf-file-name="lexer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lexer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="45" column="18" lean-forward="true" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+            <state relative-caret-position="765">
+              <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -50,7 +49,7 @@
       <file leaf-file-name="_parser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="544">
               <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
@@ -63,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/exec.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+              <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
               <folding>
                 <element signature="e#18#43#0" expanded="true" />
               </folding>
@@ -80,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="len.fyp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="len.fyp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/len.fyp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state relative-caret-position="102">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -98,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="error_handler.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="error_handler.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/error_handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+            <state relative-caret-position="68">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -110,7 +109,7 @@
       <file leaf-file-name="evaluator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="867">
               <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
@@ -172,15 +171,15 @@
         <option value="$PROJECT_DIR$/execute_file.py" />
         <option value="$PROJECT_DIR$/fyp.sh" />
         <option value="$PROJECT_DIR$/_parser.py" />
-        <option value="$PROJECT_DIR$/example.fyp" />
         <option value="$PROJECT_DIR$/world.py" />
         <option value="$PROJECT_DIR$/utility.py" />
-        <option value="$PROJECT_DIR$/error_handler.py" />
         <option value="$PROJECT_DIR$/lexer.py" />
-        <option value="$PROJECT_DIR$/exec.py" />
         <option value="$PROJECT_DIR$/evaluator.py" />
         <option value="$PROJECT_DIR$/tests/function_arg_count.fyp" />
         <option value="$PROJECT_DIR$/tests/len.fyp" />
+        <option value="$PROJECT_DIR$/example.fyp" />
+        <option value="$PROJECT_DIR$/exec.py" />
+        <option value="$PROJECT_DIR$/error_handler.py" />
       </list>
     </option>
   </component>
@@ -485,35 +484,42 @@
       <option name="project" value="LOCAL" />
       <updated>1523293920010</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="You can now pass function as arguments to functions.">
+      <created>1523306549824</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1523306549824</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="800" y="27" width="800" height="873" extended-state="4" />
     <editor active="true" />
     <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26625" />
       <window_info anchor="bottom" id="TODO" order="8" />
-      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
+      <window_info anchor="right" id="Database" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" weight="0.3287841" />
       <window_info anchor="bottom" id="Python Console" order="4" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24689826" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.24876237" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26625" />
-      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="1" />
       <window_info anchor="right" id="SciView" order="0" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.24876237" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.31885856" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="right" id="Commander" order="2" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.24689826" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.31885856" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="9" weight="0.3287841" />
+      <window_info anchor="bottom" id="Messages" order="9" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +538,8 @@
     <MESSAGE value="Updated fyp file; changed indentation in evaluator.py." />
     <MESSAGE value="Language almost finished. Bux-fixing left only; And writing language tests." />
     <MESSAGE value="You can now pass function as arguments to functions." />
-    <option name="LAST_COMMIT_MESSAGE" value="You can now pass function as arguments to functions." />
+    <MESSAGE value="Made more tests; fixed some things." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made more tests; fixed some things." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -787,16 +794,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/error_handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="544">
           <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -806,31 +806,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lexer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="45" column="18" lean-forward="true" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example.fyp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exec.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
-          <folding>
-            <element signature="e#18#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="765">
+          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="867">
           <caret line="56" column="32" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
@@ -847,8 +830,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/len.fyp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state relative-caret-position="102">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.fyp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="50" column="18" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exec.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+          <folding>
+            <element signature="e#18#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/error_handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
         </state>
       </provider>
     </entry>
