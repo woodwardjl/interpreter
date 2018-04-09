@@ -7,17 +7,19 @@ import utility
 
 
 class Evaluator(object):
-    def __init__(self, parser: _parser.Parser):
+    def __init__(self, parser: _parser.Parser, is_test=False):
         self.tokens = parser.tokens
-        self.world = world.World()
+        self.is_test = is_test
+        self.world = world.World(is_test)
         self.remove_vars = []
 
         self.__eval_map = {
-            "if":    self.__eval_if,
-            "put":   self.__eval_put,
-            "putln": self.__eval_putln,
-            "loop":  self.__eval_loop,
-            "len":   self.__eval_len}
+            "if":     self.__eval_if,
+            "put":    self.__eval_put,
+            "putln":  self.__eval_putln,
+            "loop":   self.__eval_loop,
+            "len":    self.__eval_len,
+            "concat": self.__eval_concat}
 
     def eval(self) -> int or bool:
         for token in self.tokens:
@@ -39,7 +41,7 @@ class Evaluator(object):
                 if len(token) > 3:
                     if len(token[3]) > 1:
                         token[3] = [tok for tok in token[3:]]
-                    else:
+                    elif not len(token[3]) == 0:
                         token[3] = token[3][0]
                 self.world.insert_func(token[1], token[2], token[3])
             elif type_helper.is_math(token[0]) or type_helper.is_operator(
@@ -75,7 +77,9 @@ class Evaluator(object):
                 elif self.world.func_map_has_key(token):
                     return self.__eval_func(token, [])
                 else:
-                    eh.print_and_exit("variable undefined: " + token)
+                    eh.print_and_exit("variable undefined: "
+                                      + token,
+                                      self.is_test)
 
     def __eval_if(self, token: list):
         if self.__eval(token[1]):
@@ -90,7 +94,8 @@ class Evaluator(object):
         loop_count = self.__eval(token[1])
 
         if type(loop_count) == str:
-            eh.print_and_exit("invalid loop count: " + loop_count)
+            eh.print_and_exit("invalid loop count: " + loop_count,
+                              self.is_test)
 
         for i in range(int(loop_count)):
             self.__eval(token[2])
@@ -104,11 +109,11 @@ class Evaluator(object):
                               "({3} {4} {5})"
                               .format(token[0], type(arg_one).__name__,
                                       type(arg_two).__name__, token[0],
-                                      arg_one, arg_two))
+                                      arg_one, arg_two), self.is_test)
             return self.world.get_value(token[0])(self.__eval(token[1]),
                                                   self.__eval(token[2]))
 
-        if utility.is_different_numeric_type(arg_one, arg_two):
+        if utility.is_two_different_types(int, arg_one, arg_two):
             arg_one = float(arg_one)
             arg_two = float(arg_two)
 
@@ -120,9 +125,9 @@ class Evaluator(object):
         if result == None:
             print()
         elif type(result) == str:
-            [print(section) for section in result.split("\\n")]
+            [print(section, end=endl) for section in result.split("\\n")]
         else:
-            print(result)
+            print(result, end=endl)
 
     def __eval_putln(self, token: list or str or int):
         self.__eval_put(token, "\n")
@@ -130,9 +135,15 @@ class Evaluator(object):
     def __eval_len(self, token: list or str or int):
         loop_count = self.__eval(token[1])
         if type(loop_count) == int:
-            eh.print_and_exit("invalid len of integer!")
+            eh.print_and_exit("invalid len of integer!", self.is_test)
         else:
             return len(loop_count.replace("'", ""))
+
+    def __eval_concat(self, token):
+        if len(token) == 1:
+            return ""
+
+        print(token[1:])
 
     def __eval_func(self, func_name: str, args: list):
         func_copy = self.world.get_func_copy(func_name)
@@ -140,7 +151,9 @@ class Evaluator(object):
         if len(args) != len(func_copy["args"]):
             eh.print_and_exit("func ("
                               + func_name
-                              + "): invalid argument count!")
+                              + "): invalid argument count!",
+                              self.is_test)
+            return
 
         for index, item in enumerate(func_copy["args"]):
             utility.replace_in_list(func_copy["source"], item, args[index])

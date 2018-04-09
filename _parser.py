@@ -1,5 +1,5 @@
-import lexer
 import error_handler as eh
+import utility
 
 
 class Parser(object):
@@ -10,7 +10,7 @@ class Parser(object):
     def parse(self, tokens: list) -> int or list:
         token = tokens.pop(0)
 
-        if token == "(":
+        if utility.is_char(token, "("):
             return self.__parse_until(tokens, ")")
         else:
             return self.__value(token)

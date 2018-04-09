@@ -1,14 +1,3 @@
-from collections import defaultdict
-
-
-def make_default_dict(default_value, pairs: [()]) -> defaultdict:
-    map = defaultdict(lambda: default_value)
-    for k, v in pairs:
-        map[k] = v
-
-    return map
-
-
 def replace_in_list(check_list: list, to_find, replacement):
     for index, item in enumerate(check_list):
         if type(item) == list:
@@ -29,11 +18,6 @@ def is_two_different_types(t: type, fst, snd) -> bool:
 
 def is_char(char, checker) -> bool:
     return char == checker
-
-
-def is_different_numeric_type(fst: int or float, snd: int or float) -> bool:
-    return (type(fst) == int and type(snd) == float) \
-           or (type(snd) == float and type(snd) == int)
 
 
 def is_list_of_lists(check_list: list) -> bool:

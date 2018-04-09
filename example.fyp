@@ -17,7 +17,7 @@
 
     -- passed to y will be the function.
     (func higher_order (x y) (
-      (put (* y x))
+      (y x)
     ))
 
     (func my_pow (x y)
@@ -33,7 +33,8 @@
       (if (&& (< (cube 10) 1001)
               (< 5 10))
         (sqr 10)
-        (sqr 9)))
+        (sqr 9))
+    )
 
     (var cubetest  (cube 3))
     (var cubetest2 (cube 2))
@@ -41,12 +42,12 @@
     (var strtest   ("my string"))
     (var strtest2  (+ "hello " "lol"))
 
+    (putln (+ strtest strtest2))
     (putln cubetest)
     (putln cubetest2)
     (putln strtest2)
-    (putln "Testing local var...")
     (test_local_var)
-    (higher_order 10 (sqr 10))
+    (put (higher_order 10 sqr))
 
     (print "string test" 3)
 

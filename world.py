@@ -6,7 +6,8 @@ import copy
 
 
 class World(object):
-    def __init__(self):
+    def __init__(self, is_test=False):
+        self.is_test = is_test
         self.__map = {  # Basic Math
             "*":         o.mul,
             "+":         o.add,
@@ -42,13 +43,15 @@ class World(object):
         try:
             return self.func_map[key]
         except:
-            eh.print_and_exit("func (" + key + "): func does not exist!")
+            eh.print_and_exit("func (" + key + "): func does not exist!",
+                              self.is_test)
 
     def get_value(self, key) -> int or str:
         try:
             return self.__map[key]
         except:
-            eh.print_and_exit("key (" + str(key) + "): key does not exist!")
+            eh.print_and_exit("key (" + str(key) + "): key does not exist!",
+                              self.is_test)
 
     def get_key(self, value):
         for k, v in self.__map.items():
@@ -63,12 +66,12 @@ class World(object):
         return key in self.__map
 
     def func_map_has_key(self, key: int or str) -> bool:
-        return key in self.func_map
-        # try:
-        #     return key in self.func_map
-        # except:
-        #     eh.print_and_exit("cannot use a list as key ([" + ", ".join(
-        #             [("'" + str(x) + "'") if type(x) == str else str(x) for x in key]) + "])")
+        try:
+            return key in self.func_map
+        except:
+            eh.print_and_exit("cannot use a list as key ([" + ", ".join(
+                    [("'" + str(x) + "'") if type(x) == str else str(x) for x
+                     in key]) + "])", self.is_test)
 
     def remove_vars(self, vars: list):
         for _, item in enumerate(vars):

@@ -20,14 +20,21 @@ def main():
     _file = open(file_name)
     _lex = lexer.Lexer(' '.join(
             [line.rstrip("\n") for line in _file if not __is_comment(line)]))
-    _parser = parser_.Parser(_lex.tokenize().tokens)
-    _eval = evaluator.Evaluator(_parser)
+    _tokens = _lex.tokenize().tokens
+
+    is_test = False
+
+    if len(_tokens) > 1 and _tokens[2] == "test":
+        is_test = True
+        _tokens = _tokens[0:2] + _tokens[3:]
+
+    _parser = parser_.Parser(_tokens)
+    _eval = evaluator.Evaluator(_parser, is_test)
 
     if _eval.tokens[0] != "begin":
         eh.print_and_exit("error: first function must be 'begin'!")
 
     _eval.eval()
-    print(_eval.world.func_map)
     print()
 
 
@@ -43,8 +50,8 @@ def __file_exists(arg: str):
     return os.path.isfile(arg)
 
 
-def __is_comment(line: str):
-    return str.startswith(line.strip(' '), "--")
+def __is_comment(arg: str):
+    return str.startswith(arg.strip(' '), "--")
 
 
 main()
