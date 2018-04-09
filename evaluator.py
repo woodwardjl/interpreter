@@ -169,11 +169,11 @@ if __name__ == "__main__":
     (begin
 
   (func test (x y) (
-    (put y)
+    (y)
   ))
     
     (putln "Testing local var....")
-    (test 10 20)
+    (test 10 (put y))
     
     )
 

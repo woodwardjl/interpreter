@@ -48,7 +48,7 @@ class World(object):
         try:
             return self.__map[key]
         except:
-            eh.print_and_exit("key (" + key + "): key does not exist!")
+            eh.print_and_exit("key (" + str(key) + "): key does not exist!")
 
     def get_key(self, value):
         for k, v in self.__map.items():

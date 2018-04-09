@@ -23,7 +23,7 @@
   ))
 
   (func test (x y) (
-    (put 20)
+    (put y)
   ))
 
   (func test_all () (
