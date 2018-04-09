@@ -1,53 +1,59 @@
 
   (begin
 
---    (func cube (x)
---      (^ x 3)
---    )
---
---    (func sqr (x)
---      (* x x)
---    )
+    (func cube (x)
+      (^ x 3)
+    )
 
-    (func testlocalvar () (
+    (func sqr (x)
+      (* x x)
+    )
+
+    (func test_local_var () (
       (var localvar1 10)
       (var localvar2 10)
       (putln (+ localvar1 localvar2))
     ))
---
---    (func my_pow (x y)
---      (^ x y)
---    )
---
---    (func print (val rep)
---      (loop rep
---        (putln val))
---    )
---
---    (putln
---      (if (&& (< (cube 10) 1001)
---              (< 5 10))
---        (sqr 10)
---        (sqr 9)))
---
---    (var cubetest  (cube 3))
---    (var cubetest2 (cube 2))
---    (var powtest   (my_pow 2 4))
---    (var strtest   ("my string"))
---    (var strtest2  (+ "hello " "lol"))
---
---    (putln cubetest)
---    (putln cubetest2)
---    (putln strtest2)
+
+    -- passed to y will be the function.
+    (func higher_order (x y) (
+      (put (* y x))
+    ))
+
+    (func my_pow (x y)
+      (^ x y)
+    )
+
+    (func print (val rep)
+      (loop rep
+        (putln val))
+    )
+
+    (putln
+      (if (&& (< (cube 10) 1001)
+              (< 5 10))
+        (sqr 10)
+        (sqr 9)))
+
+    (var cubetest  (cube 3))
+    (var cubetest2 (cube 2))
+    (var powtest   (my_pow 2 4))
+    (var strtest   ("my string"))
+    (var strtest2  (+ "hello " "lol"))
+
+    (putln cubetest)
+    (putln cubetest2)
+    (putln strtest2)
     (putln "Testing local var...")
-    (testlocalvar)
---
---    (print "string test" 3)
---
---    (loop 3
---      (putln (> cubetest powtest)))
---
---    (loop (len "testing lol")
---      (putln (strtest)))
+    (test_local_var)
+    (higher_order 10 (sqr 10))
+
+    (print "string test" 3)
+
+    (loop 3
+      (putln (> cubetest powtest)))
+
+    (loop (len "testing lol")
+      (putln (strtest)))
 
   )
