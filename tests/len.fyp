@@ -1,0 +1,25 @@
+
+(begin test
+
+  (func str_len (str count) (
+    (if (== (len str) count) ("success!") ("failure"))
+  ))
+
+  (func int_len () (
+    (len 5)
+    ("success!")
+  ))
+
+  (func test_all () (
+    (put "Testing len of integer.... ")
+    (put int_len)
+    (put "Testing whether len of four is 4.... ")
+    (putln (str_len "five" 4))
+    (put "Testing whether len of four is 2.... ")
+    (putln (str_len "five" 2))
+  ))
+
+  (putln "\nInitiating len testing...\n")
+  (test_all)
+
+)

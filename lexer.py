@@ -28,14 +28,19 @@ class Lexer(object):
             if u.is_char(self.source_code[i], "\""):
                 i += 1
                 while not u.is_char(self.source_code[i], "\""):
-                    i += 1
                     if i >= len(self.source_code):
                         return
                     if self.source_code[i].isspace():
                         self.source_code = self.source_code[:i] \
                                            + self.string_seperator \
                                            + self.source_code[i + 1:]
+                    i += 1
             i += 1
 
     def __str__(cls):
         return str(cls.tokens)
+
+
+if __name__ == "__main__":
+    lex = Lexer("(begin (var testvar \" 123 123 123\"))")
+    lex.tokenize()

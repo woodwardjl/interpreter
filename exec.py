@@ -29,7 +29,7 @@ def main():
         _tokens = _tokens[0:2] + _tokens[3:]
 
     _parser = parser_.Parser(_tokens)
-    _eval = evaluator.Evaluator(_parser, is_test)
+    _eval = evaluator.Evaluator(_parser, True)
 
     if _eval.tokens[0] != "begin":
         eh.print_and_exit("error: first function must be 'begin'!")

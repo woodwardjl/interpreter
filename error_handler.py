@@ -6,7 +6,7 @@ def print_and_exit(message: str, is_test=False):
         print()
         sys.exit()
     else:
-        print("failure!")
+        print("failure!", end="")
 
 
 def warning(message: str):

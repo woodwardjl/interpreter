@@ -51,8 +51,10 @@ class Evaluator(object):
                 if self.world.func_map_has_key(token[0]):
                     return self.__eval_func(token[0], token[1:])
                 else:
-                    return self.world.get_value(token[0])(
-                            self.__eval(token[1]))
+                    eval_one = self.__eval(token[1])
+                    if eval_one != None:
+                        return self.world.get_value(token[0])(
+                                self.__eval(token[1]))
             else:
                 if type(token[0]) != list:
                     return self.__eval_map[token[0]](token)
@@ -143,7 +145,7 @@ class Evaluator(object):
         if len(token) == 1:
             return ""
 
-        print(token[1:])
+        return ''.join([self.__eval(i) for i in token[1:]])
 
     def __eval_func(self, func_name: str, args: list):
         func_copy = self.world.get_func_copy(func_name)
