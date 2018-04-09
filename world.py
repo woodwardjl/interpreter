@@ -4,6 +4,7 @@ import error_handler as eh
 import math
 import copy
 
+
 class World(object):
     def __init__(self):
         self.__map = {  # Basic Math
@@ -35,7 +36,7 @@ class World(object):
         self.__map[key] = value
 
     def insert_func(self, name: str, args: list, source: list):
-        self.func_map[name] = {"args": args, "source": source, "vars": None}
+        self.func_map[name] = {"args": args, "source": source}
 
     def get_func(self, key: str):
         try:
@@ -61,5 +62,13 @@ class World(object):
     def map_has_key(self, key: int or str):
         return key in self.__map
 
-    def func_map_has_key(self, key: int or str):
-        return key in self.func_map
+    def func_map_has_key(self, key: int or str) -> bool:
+        try:
+            return key in self.func_map
+        except:
+            eh.print_and_exit("cannot use a list as key ([" + ", ".join(
+                    [("'" + str(x) + "'") if type(x) == str else str(x) for x in key]) + "])")
+
+    def remove_vars(self, vars: list):
+        for _, item in enumerate(vars):
+            del self.__map[item]

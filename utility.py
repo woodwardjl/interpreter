@@ -34,3 +34,10 @@ def is_char(char, checker) -> bool:
 def is_different_numeric_type(fst: int or float, snd: int or float) -> bool:
     return (type(fst) == int and type(snd) == float) \
            or (type(snd) == float and type(snd) == int)
+
+
+def is_list_of_lists(check_list: list) -> bool:
+    if check_list == []:
+        return False
+
+    return type(check_list[0]) == list

@@ -1,8 +1,7 @@
 import sys
 
-
-def print_and_exit(message: str):
-    print("error: " + message)
+def print_and_exit(message: str, start_message=""):
+    print("\n-- error: " + message + "\n")
     sys.exit()
 
 

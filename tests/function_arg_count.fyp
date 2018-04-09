@@ -1,0 +1,52 @@
+
+(begin
+
+  (func test_args_0 () (
+    (put "Testing 0 arg function call with 0 args... ")
+    (putln args_0)
+    (put "Testing 0 arg function call with 1 arg... ")
+    (putln (args_0 1))
+  ))
+
+  (func test_args_1 () (
+    (put "Testing 1 arg function call with 1 args... ")
+    (putln (args_1 1))
+    (put "Testing 1 arg function call with 0 arg... ")
+    (putln (args_1))
+  ))
+
+  (func test_args_2 () (
+    (put "Testing 2 arg function call with 2 args... ")
+    (putln (args_2 2 2))
+    (put "Testing 2 arg function call with 1 arg... ")
+    (putln (args_2 1))
+  ))
+
+  (func test (x y) (
+    (put 20)
+  ))
+
+  (func test_all () (
+    (test_args_0)
+    (test_args_1)
+    (test_args_2)
+  ))
+
+  (func args_0 () (
+    "success!"
+  ))
+
+  (func args_1 (_) (
+    "success!"
+  ))
+
+  (func args_2 (_ _) (
+    "success!"
+  ))
+
+--  (putln "Initiating function argument testing...")
+--  (test_all)
+  (putln "Loltest...")
+  (test 10 20)
+
+)

@@ -13,10 +13,11 @@ class Evaluator(object):
         self.remove_vars = []
 
         self.__eval_map = {
-            "if":   self.__eval_if,
-            "put":  self.__eval_put,
-            "loop": self.__eval_loop,
-            "len":  self.__eval_len}
+            "if":    self.__eval_if,
+            "put":   self.__eval_put,
+            "putln": self.__eval_putln,
+            "loop":  self.__eval_loop,
+            "len":   self.__eval_len}
 
     def eval(self) -> int or bool:
         for token in self.tokens:
@@ -35,20 +36,24 @@ class Evaluator(object):
             elif token[0] == "var":
                 self.world.insert(token[1], self.__eval(token[2]))
             elif token[0] == "func":
+                if len(token) > 3:
+                    token[3].append(token[4:])
                 self.world.insert_func(token[1], token[2], token[3])
             elif type_helper.is_math(token[0]) or type_helper.is_operator(
                     token[0]):
                 return self.__eval_math(token)
-            elif token[0] not in self.__eval_map:
+            elif type(token[0]) != list and token[0] not in self.__eval_map:
                 if self.world.func_map_has_key(token[0]):
                     return self.__eval_func(token[0], token[1:])
                 else:
                     return self.world.get_value(token[0])(
                             self.__eval(token[1]))
             else:
-                tok = token[0]
-                return self.__eval_map[tok](token)
-
+                if type(token[0]) != list:
+                    return self.__eval_map[token[0]](token)
+                else:
+                    for item in token:
+                        self.__eval(item)
         else:
             return self.__eval_literal(token)
 
@@ -64,6 +69,8 @@ class Evaluator(object):
             else:
                 if self.world.map_has_key(token):
                     return self.world.get_value(token)
+                elif self.world.func_map_has_key(token):
+                    return self.__eval_func(token, [])
                 else:
                     eh.print_and_exit("variable undefined: " + token)
 
@@ -104,8 +111,18 @@ class Evaluator(object):
 
         return self.world.get_value(token[0])(arg_one, arg_two)
 
-    def __eval_put(self, token: list or str or int):
-        print(self.__eval(token[1]))
+    def __eval_put(self, token: list or str or int, endl=""):
+        result = self.__eval(token[1])
+
+        if result == None:
+            print()
+        elif type(result) == str:
+            [print(section) for section in result.split("\\n")]
+        else:
+            print(result)
+
+    def __eval_putln(self, token: list or str or int):
+        self.__eval_put(token, "\n")
 
     def __eval_len(self, token: list or str or int):
         loop_count = self.__eval(token[1])
@@ -125,67 +142,43 @@ class Evaluator(object):
         for index, item in enumerate(func_copy["args"]):
             utility.replace_in_list(func_copy["source"], item, args[index])
 
-        return self.__eval(func_copy["source"])
+        return_eval = self.__eval(func_copy["source"])
+        self.world.remove_vars(self.__get_remove_vars(func_copy["source"]))
+
+        return return_eval
 
     def __get_remove_vars(self, token: list):
         to_return = []
 
-        for sublist in token:
-            if type(sublist) == list and len(sublist) > 0 and sublist[0] == "var":
-                to_return.append(sublist[1])
+        for index, item in enumerate(token):
+            if type(item) == list:
+                if utility.is_list_of_lists(item):
+                    to_return += self.__get_remove_vars(item)
+                else:
+                    if len(item) < 2:
+                        continue
+
+                    if item[0] == "var":
+                        to_return.append(item[1])
 
         return to_return
 
 
 if __name__ == "__main__":
     lex = lexer.Lexer("""
+    (begin
 
-  (begin
-  
-    (func cube (x)
-      (^ x 3))
-      
-    (func sqr (x)
-      (* x x))
-      
-    (func testlocalvar ()
-      (put 10))
-      
-    (func my_pow (x y)
-      (^ x y))
+  (func test (x y) (
+    (put y)
+  ))
+    
+    (putln "Testing local var....")
+    (test 10 20)
+    
+    )
 
-    (func print (val rep)
-      (loop rep
-        (put val)))
-
-    (put
-      (if (&& (< (cube 10) 1001) 
-              (< 5 10))
-        (sqr 10)
-        (sqr 9)))
-
-    (var cubetest  (cube 3))
-    (var cubetest2 (cube 2))
-    (var powtest   (my_pow 2 4))
-    (var strtest   ("my string"))
-    (var strtest2  (+ "hello " "lol"))
-
-    (put cubetest)
-    (put cubetest2)
-    (put strtest2)
-    (testlocalvar)
-
-    (print "string test" 3)
-
-    (loop 3
-      (put (> cubetest powtest)))
-
-    (loop (len "testing lol")
-      (put (strtest)))
-      
-  )
-
-                      """)
+    """)
 
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
     e.eval()
+    print()
