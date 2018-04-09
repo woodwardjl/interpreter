@@ -29,15 +29,18 @@ class Evaluator(object):
             if len(token) == 0:
                 return
             elif len(token) == 1:
-                if self.world.func_map_has_key(token[0]):
-                    return self.__eval_func(token[0], [])
-                else:
-                    return self.__eval(token[0])
+                if type(token[0]) != list:
+                    if self.world.func_map_has_key(token[0]):
+                        return self.__eval_func(token[0], [])
+                return self.__eval(token[0])
             elif token[0] == "var":
                 self.world.insert(token[1], self.__eval(token[2]))
             elif token[0] == "func":
                 if len(token) > 3:
-                    token[3].append(token[4:])
+                    if len(token[3]) > 1:
+                        token[3] = [tok for tok in token[3:]]
+                    else:
+                        token[3] = token[3][0]
                 self.world.insert_func(token[1], token[2], token[3])
             elif type_helper.is_math(token[0]) or type_helper.is_operator(
                     token[0]):
@@ -173,12 +176,12 @@ if __name__ == "__main__":
   ))
     
     (putln "Testing local var....")
-    (test 10 (put y))
+    (test 10 (put 200))
     
     )
 
     """)
 
     e = Evaluator(_parser.Parser(lex.tokenize().tokens))
+    print(e.tokens)
     e.eval()
-    print()

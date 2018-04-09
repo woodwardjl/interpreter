@@ -63,11 +63,12 @@ class World(object):
         return key in self.__map
 
     def func_map_has_key(self, key: int or str) -> bool:
-        try:
-            return key in self.func_map
-        except:
-            eh.print_and_exit("cannot use a list as key ([" + ", ".join(
-                    [("'" + str(x) + "'") if type(x) == str else str(x) for x in key]) + "])")
+        return key in self.func_map
+        # try:
+        #     return key in self.func_map
+        # except:
+        #     eh.print_and_exit("cannot use a list as key ([" + ", ".join(
+        #             [("'" + str(x) + "'") if type(x) == str else str(x) for x in key]) + "])")
 
     def remove_vars(self, vars: list):
         for _, item in enumerate(vars):
