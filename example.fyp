@@ -24,36 +24,36 @@
       (^ x y)
     ))
 
-    (loop 0 i (< i 10) (
+    (while 0 i (< i 10) (
+      (putln (sqr i))
+    ))
+
+    (loop 0 10 i () (
       (putln i)
     ))
 
-    (loop 0 3 () (
-      (putln "rofl")
-    ))
-
-    (putln
-      (if (&& (< (cube 10) 1001)
-              (< 5 10))
-        (sqr 10)
-        (sqr 9))
-    )
-
-    (var cubetest  (cube 3))
-    (var cubetest2 (cube 2))
-    (var powtest   (my_pow 2 4))
-    (var strtest   ("my string"))
-    (var strtest2  (+ "hello " "lol"))
-
-    (putln (concat strtest " " strtest2))
-    (test_local_var)
+--    (putln
+--      (if (&& (< (cube 10) 1001)
+--              (< 5 10))
+--        (sqr 10)
+--        (sqr 9))
+--    )
+--
+--    (var cubetest  (cube 3))
+--    (var cubetest2 (cube 2))
+--    (var powtest   (my_pow 2 4))
+--    (var strtest   ("my string"))
+--    (var strtest2  (+ "hello " "lol"))
+--
+--    (putln (concat strtest " " strtest2))
+--    (test_local_var)
     (putln (higher_order sqr 10))
---    (put localvar1)
-
-    (loop 3 ()
-      (putln (> cubetest powtest)))
-
-    (loop (len "testing lol") ()
-      (putln (strtest)))
+----    (put localvar1)
+--
+--    (loop 3 ()
+--      (putln (> cubetest powtest)))
+--
+--    (loop (len "testing lol") ()
+--      (putln (strtest)))
 
   )

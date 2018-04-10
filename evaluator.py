@@ -4,6 +4,7 @@ import lexer
 import type_helper
 import error_handler as eh
 import utility
+import copy
 
 
 class Evaluator(object):
@@ -18,12 +19,16 @@ class Evaluator(object):
             "put":    self.__eval_put,
             "putln":  self.__eval_putln,
             "loop":   self.__eval_loop,
+            "while":  self.__eval_while,
             "len":    self.__eval_len,
             "concat": self.__eval_concat}
 
     def eval(self) -> int or bool:
         for token in self.tokens:
-            self.__eval(token)
+            try:
+                self.__eval(token)
+            except:
+                eh.print_and_exit("invalid format: " + " ".join([str(x) for x in token]))
 
     def __eval(self, token: list or str or int):
         if isinstance(token, list):
@@ -89,18 +94,42 @@ class Evaluator(object):
         else:
             return self.__eval(token[3])
 
+    def __eval_while(self, token:list):
+        if len(token) <= 2:
+            return
+
+        start = token[1]
+        var = token[2]
+        condition = token[3]
+
+        i = start
+        new_condition = copy.deepcopy(condition)
+        utility.replace_in_list(new_condition, var, i)
+
+        while (self.__eval(new_condition)):
+            initial_loop = copy.deepcopy(token[4])
+            utility.replace_in_list(token[4], var, i)
+            self.__eval(token[4])
+            i += 1
+            new_condition = copy.deepcopy(condition)
+            utility.replace_in_list(new_condition, var, i)
+            token[4] = initial_loop
+
     def __eval_loop(self, token: list):
         if len(token) <= 2:
             return
 
-        loop_count = self.__eval(token[1])
+        start = token[1]
+        var = token[2]
+        condition = token[3]
 
-        if type(loop_count) == str:
-            eh.print_and_exit("invalid loop count: " + loop_count,
-                              self.is_test)
+        if type(var) == int:
+            for i in range(start, var):
+                initial_loop = copy.deepcopy(token[5])
+                utility.replace_in_list(token[5], condition, i)
+                self.__eval(token[5])
+                token[5] = initial_loop
 
-        for i in range(int(loop_count)):
-            self.__eval(token[2])
 
     def __eval_math(self, token: list):
         arg_one = self.__eval(token[1])
@@ -184,16 +213,13 @@ class Evaluator(object):
 
 if __name__ == "__main__":
     lex = lexer.Lexer("""
-    (begin
 
-  (func test (x y) (
-    (y)
-  ))
-    
-    (putln "Testing local var....")
-    (test 10 (put 200))
-    
-    )
+  (begin
+
+    (loop 0 3 i () (
+      (putln i)
+    ))
+  )
 
     """)
 

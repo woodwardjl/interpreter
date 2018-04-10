@@ -2,7 +2,7 @@ import sys
 
 def print_and_exit(message: str, is_test=False):
     if not is_test:
-        print("\n\n-- error: " + message + "\n")
+        print("-- error: " + message)
         print()
         sys.exit()
     else:
