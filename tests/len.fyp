@@ -1,24 +1,32 @@
 
 (begin test
 
-  (func str_len (str count) (
+  (func str_len_with_count (str count) (
     (if (== (len str) count)
-        ("success!")
-        ("failure"))
+        (putln "success!")
+        (putln "failure"))
+  ))
+
+  (func str_len_general () (
+    (len "12345")
+    (putln "success!")
   ))
 
   (func int_len () (
-    (len 5)
-    ("success!")
+    (var x (len 10))
+    (putln x)
+  ))
+
+  (func test_func (msg f) (
+    (put msg)
+    (f)
   ))
 
   (func test_all () (
-    (put "Testing len of integer.... ")
-    (put int_len)
-    (put "Testing whether len of four is 4.... ")
-    (putln (str_len "five" 4))
-    (put "Testing whether len of four is 2.... ")
-    (putln (str_len "five" 2))
+    (test_func "Testing len of integer (should fail)... " int_len)
+    (test_func "Testing len of string (should pass)... " str_len_general)
+    (test_func "Testing that len if '12345' is 5 (should pass)... "
+               (str_len_with_count "12345" 5))
   ))
 
   (putln "\nInitiating len testing...\n")

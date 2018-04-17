@@ -35,7 +35,6 @@ def main():
         eh.print_and_exit("error: first function must be 'begin'!")
 
     _eval.eval()
-    print()
 
 
 def __get_file_name(arg: list):

@@ -3,7 +3,6 @@ import sys
 def print_and_exit(message: str, is_test=False):
     if not is_test:
         print("-- error: " + message)
-        print()
         sys.exit()
     else:
         print("failure!", end="")

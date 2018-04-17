@@ -5,6 +5,7 @@ import type_helper
 import error_handler as eh
 import utility
 import copy
+import sys
 
 
 class Evaluator(object):
@@ -28,7 +29,8 @@ class Evaluator(object):
             try:
                 self.__eval(token)
             except:
-                eh.print_and_exit("invalid format: " + " ".join([str(x) for x in token]))
+                print("-- exiting...\n\n")
+                sys.exit()
 
     def __eval(self, token: list or str or int):
         if isinstance(token, list):
@@ -83,6 +85,8 @@ class Evaluator(object):
                     return self.world.get_value(token)
                 elif self.world.func_map_has_key(token):
                     return self.__eval_func(token, [])
+                elif token == "putln":
+                    print()
                 else:
                     eh.print_and_exit("variable undefined: "
                                       + token,
@@ -120,7 +124,7 @@ class Evaluator(object):
             return
 
         start = token[1]
-        var = token[2]
+        var = self.__eval(token[2])
         condition = token[3]
 
         if type(var) == int:
@@ -151,6 +155,10 @@ class Evaluator(object):
         return self.world.get_value(token[0])(arg_one, arg_two)
 
     def __eval_put(self, token: list or str or int, endl=""):
+        if len(token) == 1:
+            print()
+            return
+
         result = self.__eval(token[1])
 
         if result == None:
@@ -174,7 +182,8 @@ class Evaluator(object):
         if len(token) == 1:
             return ""
 
-        return ''.join([self.__eval(i) for i in token[1:]])
+        var =  ''.join([str(self.__eval(i)) for i in token[1:]])
+        return var
 
     def __eval_func(self, func_name: str, args: list):
         func_copy = self.world.get_func_copy(func_name)
@@ -214,12 +223,11 @@ class Evaluator(object):
 if __name__ == "__main__":
     lex = lexer.Lexer("""
 
-  (begin
+(begin
 
-    (loop 0 3 i () (
-      (putln i)
-    ))
-  )
+(putln)
+
+)
 
     """)
 

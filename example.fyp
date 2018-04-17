@@ -1,6 +1,9 @@
 
   (begin
 
+    (putln "\n---------- Functions ----------")
+    -----------------------
+    -- Simple functions.
     (func cube (x)
       (^ x 3)
     )
@@ -9,51 +12,128 @@
       (* x x)
     )
 
+    (putln (concat "[func cube] -> [cube 3] -> " (cube 3)))
+    (putln (concat "[func sqr] -> [sqr 3] -> " (sqr 3)))
+    -----------------------
+
+    -----------------------
+    -- Local variable functions.
     (func test_local_var () (
       (var localvar1 10)
       (var localvar2 10)
       (putln (+ localvar1 localvar2))
     ))
 
-    -- passed to y will be the function.
+    (put "[func test_local_var] 10 + 10: ")
+    (test_local_var)
+    -- (put localvar1)
+    -----------------------
+
+    -----------------------
+    -- Higher-Order functions.
     (func higher_order (f x) (
       (f x)
     ))
 
-    (func my_pow (x y) (
-      (^ x y)
+    (putln (concat "[func higher_order] -> [higher_order sqr 4] -> "
+                   (higher_order sqr 4)))
+
+    -----------------------
+
+    -----------------------
+    -- Recursive functions.
+    (func my_pow (x exp) (
+      (if (<= exp 0)
+          (1)
+          (* x (my_pow x (- exp 1)))
+      )
     ))
 
-    (while 0 i (< i 10) (
-      (putln (sqr i))
+    (func my_factorial (x) (
+      (if (<= x 0)
+          (1)
+          (* x (my_factorial (- x 1)))
+      )
     ))
 
-    (loop 0 10 i () (
-      (putln i)
+    (putln (concat "[func my_pow] -> [my_pow 2 5] -> " (my_pow 2 5)))
+    (putln (concat "[func factorial] -> [!8] -> "
+                   (my_factorial 8)))
+    -----------------------
+
+    -----------------------
+    -- Loops.
+    (func while_loop () (
+      (while 0 i (< i 10) (
+        (put i)
+        (if (< i (- 10 1))
+            (put ", ")
+            ()
+        )
+      ))
     ))
 
---    (putln
---      (if (&& (< (cube 10) 1001)
---              (< 5 10))
---        (sqr 10)
---        (sqr 9))
---    )
---
---    (var cubetest  (cube 3))
---    (var cubetest2 (cube 2))
---    (var powtest   (my_pow 2 4))
---    (var strtest   ("my string"))
---    (var strtest2  (+ "hello " "lol"))
---
---    (putln (concat strtest " " strtest2))
---    (test_local_var)
-    (putln (higher_order sqr 10))
-----    (put localvar1)
---
---    (loop 3 ()
---      (putln (> cubetest powtest)))
---
---    (loop (len "testing lol") ()
---      (putln (strtest)))
+    (func for_loop () (
+      (loop 5 15 i () (
+        (put i)
+        (if (< i (- 15 1))
+            (put ", ")
+            ()
+        )
+      ))
+    ))
 
+    (func loop_len () (
+      (loop 0 (len "test len") i () (
+        (put i)
+        (if (< i (- (len "test len") 1))
+            (put ", ")
+            ()
+        )
+      ))
+    ))
+
+    (put "[for_loop] -> [loop 5 15 i] -> ")
+    (for_loop)
+    (putln "")
+
+    (put "[loop_len] -> [loop 0 (len 'test len') i] -> ")
+    (loop_len)
+    (putln "")
+
+    (put "[while_loop] -> [while 0 i (< i 10)] -> ")
+    (while_loop)
+    (putln "")
+    -----------------------
+
+    -----------------------
+    -- If/else conditions.
+    (func if_else () (
+      (putln
+        (if (&& (< (cube 10) 1001)
+                (< 5 3))
+          (sqr 10)
+          (sqr 9))
+      )
+    ))
+
+    (put "[if_else] -> ")
+    (putln if_else)
+    -----------------------
+
+    -----------------------
+    -- Variable declaration/definition.
+    (var cube_three       (cube 3))
+    (var string_simple    ("my string"))
+    (var string_addition  (+ "hello " "lol"))
+    ---------------------
+
+    ---------------------
+    ---- Misc
+    -- String concat.
+    (putln "\n---------- Variables/Concat ----------")
+    (putln (concat "[cube_three] -> " cube_three))
+    (putln (concat "[string_simple] -> " string_simple))
+    (putln (concat "[string_addition] -> " string_addition))
+    (putln)
   )

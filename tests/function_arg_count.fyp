@@ -13,31 +13,26 @@
     ("success!")
   ))
 
-  (func test_args_0 () (
-    (put "Testing 0 arg function call with 0 args... ")
-    (putln args_0)
-    (put "Testing 0 arg function call with 1 arg.... ")
-    (putln (args_0 1))
-  ))
-
-  (func test_args_1 () (
-    (put "Testing 1 arg function call with 1 args... ")
-    (putln (args_1 1))
-    (put "Testing 1 arg function call with 0 args... ")
-    (putln (args_1))
-  ))
-
-  (func test_args_2 () (
-    (put "Testing 2 arg function call with 2 args... ")
-    (putln (args_2 2 2))
-    (put "Testing 2 arg function call with 1 arg.... ")
-    (putln (args_2 1))
+  (func test_func (msg1 f1 msg2 f2) (
+    (put msg1)
+    (putln f1)
+    (put msg2)
+    (putln f2)
   ))
 
   (func test_all () (
-    (test_args_0)
-    (test_args_1)
-    (test_args_2)
+    (test_func "Testing 0 arg function call with 0 args (should pass)... "
+               args_0
+               "Testing 0 arg function call with 1 args (should fail)... "
+               (args_0 1))
+    (test_func "Testing 1 arg function call with 1 args (should pass)... "
+               (args_1 1)
+               "Testing 1 arg function call with 0 args (should fail)... "
+               args_1)
+    (test_func "Testing 2 arg function call with 2 args (should pass)... "
+               (args_2 1 1)
+               "Testing 2 arg function call with 1 args (should fail)... "
+               (args_2 1))
   ))
 
   (putln "\nInitiating function argument testing...\n")
