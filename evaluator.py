@@ -182,8 +182,7 @@ class Evaluator(object):
         if len(token) == 1:
             return ""
 
-        var =  ''.join([str(self.__eval(i)) for i in token[1:]])
-        return var
+        return ''.join([str(self.__eval(i)) for i in token[1:]])
 
     def __eval_func(self, func_name: str, args: list):
         func_copy = self.world.get_func_copy(func_name)
