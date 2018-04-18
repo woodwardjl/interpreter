@@ -1,6 +1,5 @@
 
   (begin
-
     (putln "\n---------- Functions ----------")
     -----------------------
     -- Simple functions.
