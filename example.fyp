@@ -37,7 +37,6 @@
 
     (putln (concat "[func higher_order] -> [higher_order sqr 4] -> "
                    (higher_order sqr 4)))
-
     -----------------------
 
     -----------------------
