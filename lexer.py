@@ -19,9 +19,9 @@ class Lexer(object):
             .replace(")", " ) ") \
             .split()
 
-        self.__test(self.string_seperator, " ")
-        self.__test(self.left_brace_seperator, "(")
-        self.__test(self.right_brace_seperator, ")")
+        self.__reinstate(self.string_seperator, " ")
+        self.__reinstate(self.left_brace_seperator, "(")
+        self.__reinstate(self.right_brace_seperator, ")")
 
         return self
 
@@ -41,7 +41,7 @@ class Lexer(object):
                     i += 1
             i += 1
 
-    def __test(self, seperator, replacement):
+    def __reinstate(self, seperator, replacement):
         for index, item in enumerate(self.tokens):
             self.tokens[index] = u.replace_in_str(item,
                                                   seperator,
