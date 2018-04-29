@@ -72,7 +72,7 @@
     ))
 
     (func for_loop () (
-      (loop 5 15 i () (
+      (loop 5 15 i (
         (put i)
         (if (< i (- 15 1))
             (put ", ")
@@ -82,7 +82,7 @@
     ))
 
     (func loop_len () (
-      (loop 0 (len "test len") i () (
+      (loop 0 (len "test len") i (
         (put i)
         (if (< i (- (len "test len") 1))
             (put ", ")

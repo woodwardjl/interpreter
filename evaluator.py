@@ -129,10 +129,10 @@ class Evaluator(object):
 
         if type(var) == int:
             for i in range(start, var):
-                initial_loop = copy.deepcopy(token[5])
-                utility.replace_in_list(token[5], condition, i)
-                self.__eval(token[5])
-                token[5] = initial_loop
+                initial_loop = copy.deepcopy(token[4])
+                utility.replace_in_list(token[4], condition, i)
+                self.__eval(token[4])
+                token[4] = initial_loop
 
 
     def __eval_math(self, token: list):
@@ -224,7 +224,17 @@ if __name__ == "__main__":
 
 (begin
 
-(putln)
+    (func for_loop () (
+      (loop 5 15 i (
+        (put i)
+        (if (< i (- 15 1))
+            (put ", ")
+            ()
+        )
+      ))
+    ))
+    
+    (for_loop)
 
 )
 
