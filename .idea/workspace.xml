@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ef1992c-125c-4bbb-a644-25fcf6c9e384" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/interpreter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/interpreter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fypReport.docx" beforeDir="false" afterPath="$PROJECT_DIR$/fypReport.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/function_arg_count.fyp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/len.fyp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/variables.fyp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/activate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/activate.csh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/activate.fish" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/easy_install" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/easy_install-3.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/pip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/pip3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/pip3.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/python" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/python3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/bin/python3.5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/lib64" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv1/pyvenv.cfg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +43,7 @@
       <file leaf-file-name="example.fyp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/example.fyp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1666">
+            <state relative-caret-position="684">
               <caret line="122" column="25" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
             </state>
           </provider>
@@ -59,8 +70,8 @@
       <file leaf-file-name="world.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/world.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+            <state relative-caret-position="340">
+              <caret line="26" selection-start-line="26" selection-end-line="27" />
             </state>
           </provider>
         </entry>
@@ -69,18 +80,30 @@
         <entry file="file://$PROJECT_DIR$/mymath.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="evaluator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="evaluator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/evaluator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
+            <state relative-caret-position="3060">
+              <caret line="190" column="20" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="20" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_parser.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_parser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -112,6 +135,7 @@
       <find>conc</find>
       <find>eval_putln</find>
       <find>string</find>
+      <find>eh.print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -156,8 +180,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="2560" />
-    <option name="width" value="960" />
+    <option name="x" value="2781" />
+    <option name="width" value="739" />
     <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -168,6 +192,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,23 +200,17 @@
               <item name="interpreter" type="b2602c69:ProjectViewProjectNode" />
               <item name="interpreter" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="interpreter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interpreter" type="462c0819:PsiDirectoryNode" />
-              <item name="venv1" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/abstract_syntax_tree.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -490,27 +509,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2560" y="0" width="960" height="1080" extended-state="4" />
+    <frame x="2781" y="0" width="739" height="1080" extended-state="4" />
     <editor active="true" />
     <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2841678" />
       <window_info anchor="bottom" id="TODO" order="8" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
+      <window_info anchor="right" id="Database" order="1" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="1" weight="0.3287841" />
       <window_info anchor="bottom" id="Python Console" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17966436" />
-      <window_info anchor="bottom" id="Terminal" order="5" weight="0.24876237" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.225" />
-      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="1" />
       <window_info anchor="right" id="SciView" order="0" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="5" weight="0.24876237" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3188549" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
       <window_info anchor="right" id="Commander" order="2" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="3" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17966436" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3188549" />
       <window_info anchor="bottom" id="Messages" order="9" />
       <window_info anchor="bottom" id="Message" order="7" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
@@ -752,16 +771,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/execute.py" />
     <entry file="file://$PROJECT_DIR$/fyp.sh" />
-    <entry file="file://$PROJECT_DIR$/_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/len.fyp" />
     <entry file="file://$PROJECT_DIR$/tests/function_arg_count.fyp" />
     <entry file="file://$PROJECT_DIR$/tests/variables.fyp" />
@@ -779,17 +788,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/world.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mymath.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -819,17 +821,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/example.fyp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
+        <state relative-caret-position="684">
           <caret line="122" column="25" selection-start-line="122" selection-start-column="25" selection-end-line="122" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/world.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" selection-start-line="26" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/evaluator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="230" lean-forward="true" selection-start-line="230" selection-end-line="230" />
+        <state relative-caret-position="3060">
+          <caret line="190" column="20" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="20" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
