@@ -22,7 +22,8 @@ class Evaluator(object):
             "loop":   self.__eval_loop,
             "while":  self.__eval_while,
             "len":    self.__eval_len,
-            "concat": self.__eval_concat}
+            "concat": self.__eval_concat,
+            "at":     self.__eval_at}
 
     def eval(self) -> int or bool:
         for token in self.tokens:
@@ -98,7 +99,7 @@ class Evaluator(object):
         else:
             return self.__eval(token[3])
 
-    def __eval_while(self, token:list):
+    def __eval_while(self, token: list):
         if len(token) <= 2:
             return
 
@@ -133,7 +134,6 @@ class Evaluator(object):
                 utility.replace_in_list(token[4], condition, i)
                 self.__eval(token[4])
                 token[4] = initial_loop
-
 
     def __eval_math(self, token: list):
         arg_one = self.__eval(token[1])
@@ -202,6 +202,16 @@ class Evaluator(object):
 
         return return_eval
 
+    def __eval_at(self, token):
+        try:
+            evald = self.__eval(token[1]) if not type_helper.is_string(
+                    token[1]) else token[1][1:-1]
+            return evald[token[2]]
+        except:
+            eh.print_and_exit(
+                    "invalid index for (at " + str(token[1]) + " " + str(
+                            token[2]) + ")")
+
     def __get_remove_vars(self, token: list):
         to_return = []
 
@@ -224,18 +234,14 @@ if __name__ == "__main__":
 
 (begin
 
-    (func for_loop () (
-      (loop 5 15 i (
-        (put i)
-        (if (< i (- 15 1))
-            (put ", ")
-            ()
-        )
-      ))
+  (func output_with_seperator (string seperator) (
+    (var string_len (len string))
+    (loop 0 string_len index (
+      (put (concat (at string index) (if (< index (- string_len 1)) seperator "")))
     ))
-    
-    (for_loop)
-
+  ))
+  
+  (output_with_seperator "test string" "-")  
 )
 
     """)
