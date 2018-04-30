@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ef1992c-125c-4bbb-a644-25fcf6c9e384" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/interpreter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/interpreter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.~lock.fypReport.docx#" beforeDir="false" afterPath="$PROJECT_DIR$/.~lock.fypReport.docx#" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fypReport.docx" beforeDir="false" afterPath="$PROJECT_DIR$/fypReport.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/activate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/activate.csh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/activate.fish" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/easy_install" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/easy_install-3.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/pip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/pip3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/pip3.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/python" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/python3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/bin/python3.5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/lib64" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv1/pyvenv.cfg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -510,7 +495,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2781" y="0" width="739" height="1080" extended-state="4" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2841678" />
       <window_info anchor="bottom" id="TODO" order="8" />
